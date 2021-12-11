@@ -1,0 +1,76 @@
+<div class="card">
+    <h4 class="card-header">Register</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }" />
+                <div *ngIf="f.firstName.touched && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    <div *ngIf="f.firstName.errors.minlength">First Name must be at least 4 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }" />
+                <div *ngIf="f.lastName.touched && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    <div *ngIf="f.lastName.errors.minlength">Last Name must be at least 4 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number(Please do not enter country code)</label>
+                <input type="tel" formControlName="mobile" class="form-control" placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" [ngClass]="{ 'is-invalid': f.mobile.touched && f.mobile.errors }" />
+                <div *ngIf="f.mobile.touched && f.mobile.errors" class="invalid-feedback">
+                    <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+                    <div *ngIf="f.mobile.errors.pattern">Please enter a valid mobile number</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of birth</label>
+                <input type="date" formControlName="dob" [min]="nintynineyears()" [max]="todaysDate()" class="form-control" [ngClass]="{ 'is-invalid': f.dob.touched && f.dob.errors }" />
+                <div *ngIf="f.dob.touched && f.dob.errors" class="invalid-feedback">
+                    <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }" />
+                <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.pattern">Please enter a valid email</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }" />
+                <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': f.confirmpassword.touched && f.confirmpassword.errors }" />
+                <div *ngIf="f.confirmpassword.touched && f.confirmpassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.confirmpassword.errors.required">Confirm Password is required</div>
+                    <div *ngIf="f.confirmpassword.errors.minlength">Confirm Password must be at least 6 characters</div>
+                    <div *ngIf="f.confirmpassword.errors.confirmedValidator">Passwords do not match. Please confirm password</div>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" formControlName="agreeToTerms" [ngClass]="{ 'is-invalid': f.agreeToTerms.touched && f.agreeToTerms.errors }" id="exampleCheck1">
+                <label class="form-check-label" for="agreeToTerms">I have read terms and conditions.</label>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading || formNotValid()" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+                </button>
+                <a routerLink="../login" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
