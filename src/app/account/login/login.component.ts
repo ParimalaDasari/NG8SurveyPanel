@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   loading = false;
   user: SocialUser | null; 
   
+//comment
+
   constructor(private authService: SocialAuthService) { 
     this.user = null;
     this.authService.authState.subscribe((user: SocialUser) => {
