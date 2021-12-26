@@ -10,7 +10,12 @@ export class AppUserDto{
 }
 
 export class LoggedInUser{
-    firstName: string;
     email: string;
-    Token: string;
+    token: string;
 }
+
+export class LoginFormData{
+    username: string;
+    password: string;
+}
+

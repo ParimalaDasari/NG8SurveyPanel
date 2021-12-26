@@ -2,13 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoggedInUser } from 'src/app/_models/AppUserDto';
+import { AccountLoginService } from 'src/app/_services/account-login.service';
 import { ConfirmedValidator } from '../validators/ConfirmedValidator';
 
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [ AccountLoginService ]
 })
 export class RegisterComponent implements OnInit {
 
@@ -16,7 +18,9 @@ export class RegisterComponent implements OnInit {
   loading = false;
   submitted = false;
   
-  constructor(private http: HttpClient) { }
+  constructor(private accountService: AccountLoginService, private http:HttpClient) {
+    accountService.checkIfLoggedIn();
+   }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -60,10 +64,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.form.value);
     this.submitted = true;
 
-    // // reset alerts on submit
-    // this.alertService.clear();
 
-    // stop here if form is invalid
     if (this.form.invalid) {
         return;
     }
@@ -73,13 +74,8 @@ export class RegisterComponent implements OnInit {
       })
     };
 
-    this.loading = true;
-    this.http.post<any>('https://localhost:5001/api/Account/register',JSON.stringify(this.form.value),httpOptions).subscribe((data)=>{
-      console.log(data);
-      if(data.status==400){
-        this.loading=false;
-      }
-    });
+    // this.loading = true;
+    this.accountService.register(JSON.stringify(this.form.value));
     return
 }
 }
