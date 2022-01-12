@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountLoginService } from 'src/app/_services/account-login.service';
+import { GlobalnotificationService } from 'src/app/_services/globalnotification.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,9 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
 
-  constructor(private accountService: AccountLoginService, private router: Router) { 
+  constructor(private accountService: AccountLoginService, private router: Router,private gns: GlobalnotificationService) { 
     accountService.checkIfLoggedIn();
+    gns.runCode();
   }
 
   ngOnInit() {

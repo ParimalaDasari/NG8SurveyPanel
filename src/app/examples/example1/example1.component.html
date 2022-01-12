@@ -1,0 +1,18 @@
+<div class="div-with-structuralDirective" *ngIf="employeeList.length!=''">
+    <div *ngFor="let emp of employeeList;">
+        <div *ngIf="emp.rank>3">
+            {{emp.name}}
+        </div>
+    </div>
+</div>
+<hr/>
+
+<ng-container *ngIf="boolVariable" class="container-madeup-of-StructuralDirectives" >
+    <ng-container *ngFor="let emp of employeeList;">
+        <ng-template [ngIf]="emp.rank>3">
+            {{emp.name}}
+        </ng-template>
+    </ng-container>
+</ng-container>  
+
+<hr/>

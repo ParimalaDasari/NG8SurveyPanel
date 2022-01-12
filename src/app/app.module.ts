@@ -7,10 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { httpInterceptor } from './_services/httpinterceptor';
+import { NotificationWithoutButtonsComponent } from './Notifications/notification-without-buttons/notification-without-buttons.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotificationWithoutButtonsComponent
   ],
   imports: [
     BrowserModule,
