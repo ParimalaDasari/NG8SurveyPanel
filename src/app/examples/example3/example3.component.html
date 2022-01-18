@@ -1,0 +1,21 @@
+<hr/>
+Example 3
+
+
+<form [formGroup]="simpleForm" (ngSubmit)="sendMessageEvent()">
+    <div class="form-group">
+      <label for="username">Enter some text (after submitting below form example2 will be updated through event emitter)</label>
+      <input type="text" formControlName="username" class="form-control" id="username"  placeholder="Enter some text">
+      <!-- <div *ngIf="f.username.touched && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">Email is required</div>
+        <div *ngIf="f.username.errors.pattern">Email is not valid</div>
+      </div> -->
+    </div>
+    
+    <button  type="submit" class="btn btn-primary">Submit</button><br/>
+  </form>
+
+  <div>
+    <b *ngIf="msgReceived">Messages sent successfully: {{msgReceived.msg}}</b>
+  </div>
+  {{timer()}}

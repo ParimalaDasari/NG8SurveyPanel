@@ -1,0 +1,11 @@
+<p>example2-pipes works!</p>
+<span *ngIf="msgReceivedFromChildComp">{{msgReceivedFromChildComp.msg}}</span>
+<hr>
+<div>
+    <b>Messages received from child example3 are listed below(toggle changedetection in example3 to see difference)</b><br/>
+    <ng-container *ngFor="let msg of listOfMsgsReceivedFromChild">
+        <div>{{msg.msg}}</div>
+    </ng-container>
+</div>
+{{timer()}}
+<app-example3 (msgEvent)="receiveEventFromChild($event)" [msgReceived]="msgReceivedFromChildComp"></app-example3>
