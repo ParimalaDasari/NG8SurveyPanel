@@ -1,7 +1,13 @@
 <p>example6 works! Below is the lifecycle events/hooks</p>
-<ng-container *ngFor="let ele of placeHolder">
-    <div>{{ele}}</div>
+<ng-container *ngFor="let ele of placeHolder;let i=index;">
+    <div class="Container">
+        <div class="MethodName">{{i}}) &nbsp; {{ele.methodName}}</div>
+        <div class="Purpose"><b>Purpose :</b>{{ele.purpose}}</div>
+        <div class="Timing"><b>Timing :</b>{{ele.timing}}</div>
+    </div>
+    
 </ng-container>
 
 <hr>
-<input type="text" [value]="inputVar">
+<input type="text"  (keydown)="setInputValue(this)" placeholder="example6 input box">
+<button (click)="resetArray()">clear</button>
