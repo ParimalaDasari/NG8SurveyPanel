@@ -1,0 +1,8 @@
+.RecordContainer{
+    border: 2px black;
+    margin: 2px 2px 2px 2px solid black;
+    padding: 21px black;
+    align-items: center;
+    float: left;
+}
+

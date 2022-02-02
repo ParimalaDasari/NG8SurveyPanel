@@ -1,0 +1,40 @@
+<p>example11 works!</p>
+<div>
+    <input type="text" #inpText [value]="inpFieldValue">
+    <button (click)="getData(inpText.value)">Get Data</button>    
+</div>
+
+<div>
+    <ol>
+        <ng-container *ngFor="let ele of surveyNames">
+            <li (click)="ccd(ele)"><span >{{ele}}</span></li>
+        </ng-container>
+    </ol>
+</div>
+
+<hr>
+<b> Result:</b>
+<hr>
+<div>
+    <ng-container >
+        <div class="RecordContainer" *ngFor="let record of LandRecords">
+            <div><strong >surveyNumber</strong>: <span >{{record.surveyNumber}}</span> </div> <br>
+            <div><strong >Pattadar Name</strong>: <span >{{record.pattadar_Name}}</span> </div> <br>
+            <!-- <div><strong >ppB_Number</strong>: <span >{{record.ppB_Number}}</span> </div> <br> -->
+            <div><strong >TotalExtent AcGnts</strong>: <span >{{record.totalExtent_Ac_Gnts}}</span> </div> <br>
+            <div><strong >District</strong>: <span >{{record.district}}</span> </div> <br>
+            <!-- <div><strong >eKYC Status</strong>: <span >{{record.eKYC_Status}}</span> </div> <br> -->
+            <div><strong >Father/Husband Name</strong>: <span >{{record.father_Or_Husband_Name}}</span> </div> <br>
+            <div><strong >Land Classification</strong>: <span >{{record.land_Classification}}</span> </div> <br>
+            <!-- <div><strong >Land Status</strong>: <span >{{record.land_Status}}</span> </div> <br> -->
+            <div><strong >Land Type</strong>: <span >{{record.land_Type}}</span> </div> <br>
+            <!-- <div><strong >Mandal</strong>: <span >{{record.mandal}}</span> </div> <br> -->
+            <!-- <div><strong >Market Value</strong>: <span >{{record.market_Value}}</span> </div> <br> -->
+            
+            <!-- <div><strong >Transaction_Status</strong>: <span >{{record.transaction_Status}}</span> </div> <br> -->
+            <!-- <div><strong >Village</strong>: <span >{{record.village}}</span> </div> <br> -->
+            <hr>
+        </div>
+        <hr>
+    </ng-container>
+</div>

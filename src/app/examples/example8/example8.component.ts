@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { strictEqual } from 'assert';
 import { map } from 'rxjs/operators';
-
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-example8',
@@ -36,12 +36,20 @@ export class Example8Component implements OnInit {
    }
 
   ngOnInit() {
-    // this.getCall();
-    
+    // this.getSurveyNumbers();
+    // this.saveFile();
   }
 
-  getCall(){
-    this.http.get<any>('url for getting survey numbers',{observe:"response",responseType:'text' as 'json'}).subscribe(data => {
+  saveFile() {
+      const blob = 
+          new Blob([
+                  "Please Save Me!"], 
+                  {type: "text/plain;charset=utf-8"});
+      saveAs(blob, "save-me.txt");
+  }
+
+  getSurveyNumbers(){
+    this.http.get<any>("https:// domain /getSurveyCitizen?villId=3003014&flag=survey",{observe:"response",responseType:'text' as 'json'}).subscribe(data => {
             this.htmlData = data.body.split('<body>');
             this.htmlData = this.htmlData[1].split('</body>');
             console.log(this.htmlData[0]);
@@ -83,8 +91,20 @@ export class Example8Component implements OnInit {
       }
        
     }
+    let finalSNList = tagArray.slice(1).filter(this.isOptionValue);
+    console.log('parsed tagArray',finalSNList);
+    this.saveSurveyNumbersInDb(finalSNList);
     
-    console.log('parsed tagArray',tagArray.slice(1).filter(this.isOptionValue));
+  }
+
+  saveSurveyNumbersInDb(numbers: string[]){
+    this.http.post<any>('https://localhost:5001/api/land/SaveSurveyNumbers',numbers).subscribe((data)=>{
+      console.log(data);
+    },
+    err=>{
+      console.log(err);
+    }
+    );
   }
 
   isOptionValue(element, index, array) { 
