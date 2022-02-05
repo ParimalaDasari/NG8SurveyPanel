@@ -17,11 +17,15 @@ import { Example10Component } from './example10/example10.component';
 import { Example11Component } from './example11/example11.component';
 import { Example12Component } from './example12/example12.component';
 import { TextTransformPipe } from './example12/text-transform.pipe';
+import { Example13Component } from './example13/example13.component';
+import { Example14Component } from './example14/example14.component';
+import { Example15Component } from './example15/example15.component';
+import { Example16Component } from './example16/example16.component';
 
 
 
 @NgModule({
-  declarations: [Example1Component, Example2PipesComponent, Example3Component, Example4Component, Example5Component, Example6Component, Example7Component, Example8Component, Example9Component, Example10Component, Example11Component, Example12Component, TextTransformPipe],
+  declarations: [Example1Component, Example2PipesComponent, Example3Component, Example4Component, Example5Component, Example6Component, Example7Component, Example8Component, Example9Component, Example10Component, Example11Component, Example12Component, TextTransformPipe, Example13Component, Example14Component, Example15Component, Example16Component],
   imports: [
     CommonModule,
     ExampleRoutingModule,

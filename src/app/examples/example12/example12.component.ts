@@ -5,7 +5,7 @@ import { alphabetContainerModel } from './alphabetContanerModel';
   selector: 'app-example12',
   templateUrl: './example12.component.html',
   styleUrls: ['./example12.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.Default
 })
 export class Example12Component implements OnInit {
 

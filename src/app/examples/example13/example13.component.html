@@ -1,0 +1,15 @@
+<p (click)="runcdref()">example13 works!</p>
+<a [routerLink]="['/example/pipeExample']">click to goto default id  <b>007</b></a>
+
+<hr>
+<div>employee id is {{empId}}</div>
+<div>Before the route is activated the routeparam length is calculated through resolve guard: ==> {{empIdLen}}</div>
+
+Loggedin user: {{getUser()}}
+<br>
+<div>
+
+    <button (click)="setValueInLocalStorage()">Set User</button>
+    <button (click)="removeValueInLocalStorage()">Remove User</button>
+
+</div>
